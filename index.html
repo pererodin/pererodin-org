@@ -991,7 +991,7 @@ body {
 <section class="sp-hero" aria-label="Главный экран">
   <div class="sp-photo" role="img" aria-label="Фото Станислава Переродина"></div>
   <div class="sp-content">
-    <p class="sp-role">Клинический психолог</p>
+    <p class="sp-role">Практикующий клинический психолог</p>
     <h1 class="sp-name">Станислав<br>Переродин</h1>
     <p class="sp-apa">Член American Psychological Association</p>
     <div class="sp-divider" aria-hidden="true"></div>
@@ -1875,25 +1875,35 @@ body {
       mount();
     },
     startBreath() {
-      S.breathPhase = 'inhale';
-      S.breathCount = 4;
+      const phases = [
+        {p:'inhale', d:4},
+        {p:'hold',   d:2},
+        {p:'exhale', d:7},
+      ];
+      let pi = 0;
+      S.breathPhase = phases[0].p;
+      S.breathCount = phases[0].d;
       S.breathCycle = 0;
       mount();
-      const phases = [{p:'inhale',d:4},{p:'hold',d:2},{p:'exhale',d:7}];
-      let pi = 0, count = 4;
       S.breathTimer = setInterval(() => {
-        count--;
-        S.breathCount = count;
-        const el = document.getElementById('pr-circle');
-        if(el) { el.className='pr-breath-circle'; if(S.breathPhase==='inhale') el.classList.add('expand'); else if(S.breathPhase==='hold') el.classList.add('pause'); el.textContent=count; }
-        if(count <= 0) {
+        S.breathCount--;
+        if (S.breathCount <= 0) {
           pi++;
-          if(pi >= phases.length) { pi=0; S.breathCycle++; }
-          if(S.breathCycle >= 5) { clearInterval(S.breathTimer); S.breathPhase='done'; mount(); return; }
-          count = phases[pi].d;
+          if (pi >= phases.length) {
+            pi = 0;
+            S.breathCycle++;
+          }
+          if (S.breathCycle >= 5) {
+            clearInterval(S.breathTimer);
+            S.breathTimer = null;
+            S.breathPhase = 'done';
+            mount();
+            return;
+          }
           S.breathPhase = phases[pi].p;
-          S.breathCount = count;
+          S.breathCount = phases[pi].d;
         }
+        mount();
       }, 1000);
     },
     stopBreath() { if(S.breathTimer) clearInterval(S.breathTimer); S.breathPhase='idle'; mount(); },
