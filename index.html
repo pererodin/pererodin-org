@@ -1118,6 +1118,14 @@ body {
   </div>
 </section>
 
+<!-- ПРОТОКОЛ -->
+<section class="pr-section" id="protocol">
+  <div class="pr-inner">
+    <p class="pr-label">Протокол</p>
+    <div id="protocol-app"></div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section" id="contacts">
   <p class="cta-label">Записаться</p>
@@ -1277,6 +1285,628 @@ body {
     <div class="ft-copy">© 2026 Станислав Переродин</div>
   </div>
 </footer>
+
+<style>
+.pr-section {
+  width: 100%;
+  background: #0d0d0d;
+  padding: clamp(60px, 10vh, 120px) clamp(24px, 6vw, 100px);
+  border-top: 1px solid #2a2318;
+  border-bottom: 1px solid #2a2318;
+}
+.pr-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.pr-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c4a97a;
+  margin-bottom: 48px;
+}
+
+/* PROGRESS */
+.pr-progress-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6e6355;
+  margin-bottom: 10px;
+}
+.pr-progress-bar {
+  width: 100%;
+  height: 1px;
+  background: #2a2318;
+  margin-bottom: 48px;
+}
+.pr-progress-fill {
+  height: 1px;
+  background: #c4a97a;
+  transition: width 0.6s ease;
+}
+
+/* BLOCK */
+.pr-block { animation: prFade 0.5s ease; }
+@keyframes prFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pr-block-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c4a97a;
+  margin-bottom: 20px;
+}
+
+.pr-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.25;
+  color: #f0ebe2;
+  margin-bottom: 14px;
+}
+
+.pr-sub {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #9a8c7c;
+  margin-bottom: 36px;
+}
+
+.pr-branch {
+  background: #111008;
+  border-left: 2px solid #c4a97a;
+  padding: 22px 26px;
+  margin-bottom: 30px;
+}
+.pr-branch p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #d0c8bc;
+  margin-bottom: 10px;
+}
+.pr-branch p:last-child { margin-bottom: 0; }
+.pr-branch em { color: #f0ebe2; font-style: normal; }
+
+.pr-branch-muted {
+  border-left-color: #4a3f30;
+}
+
+/* SCALE */
+.pr-scale-q {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6e6355;
+  margin-bottom: 18px;
+}
+.pr-scale {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.pr-scale-btn {
+  width: 42px;
+  height: 42px;
+  background: transparent;
+  border: 1px solid #2a2318;
+  color: #6e6355;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.pr-scale-btn:hover { border-color: #c4a97a; color: #c4a97a; }
+.pr-scale-btn.active { border-color: #c4a97a; background: #c4a97a; color: #0d0d0d; }
+
+.pr-scale-result {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #d0c8bc;
+  font-style: italic;
+  margin-bottom: 28px;
+}
+
+/* DELTA */
+.pr-delta {
+  background: #111008;
+  border: 1px solid #2a2318;
+  padding: 22px 26px;
+  margin-bottom: 28px;
+}
+.pr-delta-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6e6355;
+  margin-bottom: 8px;
+}
+.pr-delta-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: #c4a97a;
+}
+.pr-delta-desc {
+  font-size: 13px;
+  color: #9a8c7c;
+  margin-top: 6px;
+}
+
+/* OPTIONS */
+.pr-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+.pr-opt {
+  background: transparent;
+  border: 1px solid #2a2318;
+  color: #d0c8bc;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 13px 18px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  line-height: 1.4;
+}
+.pr-opt:hover { border-color: #c4a97a; color: #f0ebe2; }
+.pr-opt.active { border-color: #c4a97a; color: #f0ebe2; background: rgba(196,169,122,0.05); }
+
+.pr-opt-selected {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: #c4a97a;
+  padding: 10px 16px;
+  border-left: 1px solid #c4a97a;
+  margin-bottom: 24px;
+}
+
+/* YES/NO */
+.pr-yn {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.pr-yn-btn {
+  flex: 1;
+  padding: 15px;
+  background: transparent;
+  border: 1px solid #2a2318;
+  color: #9a8c7c;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.pr-yn-btn:hover { border-color: #c4a97a; color: #f0ebe2; }
+.pr-yn-btn.active-yes { border-color: #c4a97a; color: #c4a97a; background: rgba(196,169,122,0.06); }
+.pr-yn-btn.active-no { border-color: #4a3f30; color: #6e6355; }
+
+/* BREATH */
+.pr-breath-box {
+  background: #111008;
+  border: 1px solid #2a2318;
+  padding: 40px 28px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+.pr-breath-circle {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 1px solid #4a3f30;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: #c4a97a;
+  transition: transform 0.8s ease, border-color 0.8s ease;
+}
+.pr-breath-circle.expand  { transform: scale(1.4); border-color: #c4a97a; }
+.pr-breath-circle.pause   { transform: scale(1.4); border-color: #e8d5b0; }
+.pr-breath-circle.contract{ transform: scale(1);   border-color: #4a3f30; }
+
+.pr-breath-phase {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6e6355;
+  margin-bottom: 6px;
+}
+.pr-breath-cycles {
+  font-size: 12px;
+  color: #4a3f30;
+  letter-spacing: 0.1em;
+  margin-top: 12px;
+}
+
+/* CTA BLOCK */
+.pr-cta-box {
+  background: #111008;
+  border: 1px solid #2a2318;
+  padding: 30px 26px;
+  margin-bottom: 20px;
+}
+.pr-cta-lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: #f0ebe2;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.pr-cta-body {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #9a8c7c;
+  margin-bottom: 22px;
+}
+
+/* BUTTONS */
+.pr-btn-primary {
+  display: block;
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #0d0d0d;
+  background: #c4a97a;
+  border: none;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+.pr-btn-primary:hover { background: #e8d5b0; }
+
+.pr-btn-ghost {
+  display: block;
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6e6355;
+  background: transparent;
+  border: 1px solid #2a2318;
+  padding: 14px 32px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  margin-top: 8px;
+}
+.pr-btn-ghost:hover { border-color: #4a3f30; color: #9a8c7c; }
+
+.pr-divider { width: 28px; height: 1px; background: #4a3f30; margin: 28px 0; }
+</style>
+
+<script>
+(function() {
+  const S = {
+    step: 0,
+    scoreBefore: null,
+    scoreAfter: null,
+    regulator: null,
+    canControl: null,
+    action: null,
+    felt: null,
+    breathPhase: 'idle',
+    breathCycle: 0,
+    breathCount: 0,
+    breathTimer: null,
+  };
+
+  const STEPS = [
+    renderIntro,
+    renderScaleBefore,
+    renderRegulator,
+    renderCanControl,
+    renderBranch1,
+    renderAction,
+    renderBreath,
+    renderScaleAfter,
+    renderFelt,
+    renderBranch2,
+    renderPetla,
+    renderCTA,
+  ];
+
+  function mount() {
+    const app = document.getElementById('protocol-app');
+    if (!app) return;
+    const total = STEPS.length;
+    const pct = Math.round((S.step / (total - 1)) * 100);
+    app.innerHTML = `
+      <div class="pr-progress-label">Шаг ${S.step + 1} из ${total}</div>
+      <div class="pr-progress-bar"><div class="pr-progress-fill" style="width:${pct}%"></div></div>
+      <div class="pr-block">${STEPS[S.step]()}</div>
+    `;
+  }
+
+  function next() {
+    S.step++;
+    mount();
+    document.getElementById('protocol').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── STEPS ──
+
+  function renderIntro() {
+    return `
+      <div class="pr-block-tag">Протокол тревоги</div>
+      <h3 class="pr-title">Тревога не проходит не потому, что с тобой что-то не так.</h3>
+      <p class="pr-sub">А потому что ты ждёшь ответ, который от тебя не зависит.<br>Проверь это за 2 минуты.</p>
+      <button class="pr-btn-primary" onclick="PR.next()">Пройти протокол →</button>
+    `;
+  }
+
+  function renderScaleBefore() {
+    const sel = S.scoreBefore;
+    const nums = Array.from({length:11},(_,i)=>i);
+    return `
+      <div class="pr-block-tag">Калибровка</div>
+      <h3 class="pr-title">Оцени тревогу прямо сейчас.</h3>
+      <div class="pr-scale-q">От 0 до 10 — где ты сейчас?</div>
+      <div class="pr-scale">
+        ${nums.map(n=>`<button class="pr-scale-btn ${sel===n?'active':''}" onclick="PR.setScore('before',${n})">${n}</button>`).join('')}
+      </div>
+      ${sel!==null ? `<div class="pr-scale-result">Уровень тревоги: ${sel}</div><button class="pr-btn-primary" onclick="PR.next()">Дальше →</button>` : ''}
+    `;
+  }
+
+  function renderRegulator() {
+    const opts = ['Анализы / симптомы','Мнение врача','Чужое мнение','Ситуация снаружи','Близкий человек','Что-то своё'];
+    const sel = S.regulator;
+    return `
+      <div class="pr-block-tag">Регулятор</div>
+      <h3 class="pr-title">От чего сейчас зависит, станет ли тебе легче?</h3>
+      <div class="pr-options">
+        ${opts.map(o=>`<button class="pr-opt ${sel===o?'active':''}" onclick="PR.setReg('${o}')">${o}</button>`).join('')}
+      </div>
+      ${sel ? `<div class="pr-opt-selected">Ты ждёшь от: <strong>${sel}</strong></div><button class="pr-btn-primary" onclick="PR.next()">Дальше →</button>` : ''}
+    `;
+  }
+
+  function renderCanControl() {
+    const sel = S.canControl;
+    return `
+      <div class="pr-block-tag">Доступность</div>
+      <h3 class="pr-title">Ты можешь повлиять на это прямо сейчас?</h3>
+      <div class="pr-yn">
+        <button class="pr-yn-btn ${sel==='yes'?'active-yes':''}" onclick="PR.setControl('yes')">Да</button>
+        <button class="pr-yn-btn ${sel==='no'?'active-no':''}" onclick="PR.setControl('no')">Нет</button>
+      </div>
+      ${sel ? `<button class="pr-btn-primary" onclick="PR.next()">Дальше →</button>` : ''}
+    `;
+  }
+
+  function renderBranch1() {
+    if (S.canControl === 'no') {
+      return `
+        <div class="pr-block-tag">Что происходит</div>
+        <div class="pr-branch">
+          <p>Тогда происходит следующее: <em>ты ждёшь решение извне.</em></p>
+          <p>Пока это так — тревога не может завершиться. Система не получает сигнал «можно остановиться».</p>
+        </div>
+        <button class="pr-btn-primary" onclick="PR.next()">Дальше →</button>
+      `;
+    }
+    return `
+      <div class="pr-block-tag">Что происходит</div>
+      <div class="pr-branch">
+        <p>Тогда проблема не в тревоге.</p>
+        <p><em>Ты уже можешь влиять на состояние — но сейчас не используешь это.</em></p>
+      </div>
+      <button class="pr-btn-primary" onclick="PR.next()">Дальше →</button>
+    `;
+  }
+
+  function renderAction() {
+    const opts = ['Изменить дыхание','Сменить положение тела','Написать кому-то','Переключить внимание'];
+    const sel = S.action;
+    return `
+      <div class="pr-block-tag">Переназначение</div>
+      <h3 class="pr-title">Что ты можешь сделать прямо сейчас?</h3>
+      <div class="pr-options">
+        ${opts.map(o=>`<button class="pr-opt ${sel===o?'active':''}" onclick="PR.setAction('${o}')">${o}</button>`).join('')}
+      </div>
+      ${sel ? `<div class="pr-opt-selected">Твоя точка опоры: <strong>${sel}</strong></div><button class="pr-btn-primary" onclick="PR.next()">Начать →</button>` : ''}
+    `;
+  }
+
+  function renderBreath() {
+    const phase = S.breathPhase;
+    const done = S.breathCycle >= 5;
+    let circleClass = '', phaseText = '', num = '◯';
+    if (phase === 'inhale')  { circleClass = 'expand';   phaseText = 'Вдох';   num = S.breathCount; }
+    if (phase === 'hold')    { circleClass = 'pause';    phaseText = 'Пауза';  num = S.breathCount; }
+    if (phase === 'exhale')  { circleClass = 'contract'; phaseText = 'Выдох';  num = S.breathCount; }
+    if (phase === 'done')    { phaseText = 'Готово'; num = '✓'; }
+    if (phase === 'idle')    { phaseText = 'Нажми начать'; }
+    return `
+      <div class="pr-block-tag">Упражнение</div>
+      <h3 class="pr-title" style="font-size:clamp(20px,3vw,30px)">Сделай сейчас.</h3>
+      <div class="pr-breath-box">
+        <div class="pr-breath-circle ${circleClass}" id="pr-circle">${num}</div>
+        <div class="pr-breath-phase">${phaseText}</div>
+        ${S.breathCycle > 0 ? `<div class="pr-breath-cycles">Циклов: ${S.breathCycle} / 5</div>` : ''}
+      </div>
+      ${phase === 'idle' && !done ? `<button class="pr-btn-primary" onclick="PR.startBreath()">Начать дыхание</button>` : ''}
+      ${done || phase === 'done' ? `<button class="pr-btn-primary" onclick="PR.next()">Готово →</button>` : ''}
+      ${phase !== 'idle' && !done ? `<button class="pr-btn-ghost" onclick="PR.stopBreath()">Остановить</button>` : ''}
+    `;
+  }
+
+  function renderScaleAfter() {
+    const sel = S.scoreAfter;
+    const nums = Array.from({length:11},(_,i)=>i);
+    const before = S.scoreBefore;
+    return `
+      <div class="pr-block-tag">Калибровка после</div>
+      <h3 class="pr-title">Оцени тревогу сейчас.</h3>
+      <div class="pr-scale-q">От 0 до 10 — где ты сейчас?</div>
+      <div class="pr-scale">
+        ${nums.map(n=>`<button class="pr-scale-btn ${sel===n?'active':''}" onclick="PR.setScore('after',${n})">${n}</button>`).join('')}
+      </div>
+      ${sel!==null ? `
+        <div class="pr-delta">
+          <div class="pr-delta-label">Было → Стало</div>
+          <div class="pr-delta-val">${before} → ${sel}</div>
+          <div class="pr-delta-desc">${getDelta(before,sel)}</div>
+        </div>
+        <button class="pr-btn-primary" onclick="PR.next()">Дальше →</button>
+      ` : ''}
+    `;
+  }
+
+  function getDelta(b, a) {
+    const d = b - a;
+    if (d > 2) return 'Заметное снижение.';
+    if (d > 0) return 'Небольшое снижение.';
+    if (d === 0) return 'Уровень не изменился.';
+    return 'Уровень вырос.';
+  }
+
+  function renderFelt() {
+    const sel = S.felt;
+    return `
+      <div class="pr-block-tag">Проверка эффекта</div>
+      <h3 class="pr-title">Стало хоть немного легче?</h3>
+      <div class="pr-yn">
+        <button class="pr-yn-btn ${sel==='yes'?'active-yes':''}" onclick="PR.setFelt('yes')">Да</button>
+        <button class="pr-yn-btn ${sel==='no'?'active-no':''}" onclick="PR.setFelt('no')">Нет</button>
+      </div>
+      ${sel ? `<button class="pr-btn-primary" onclick="PR.next()">Дальше →</button>` : ''}
+    `;
+  }
+
+  function renderBranch2() {
+    if (S.felt === 'yes') {
+      return `
+        <div class="pr-block-tag">Что это значит</div>
+        <div class="pr-branch">
+          <p>Это не случайно.</p>
+          <p>Тревога держалась не из-за симптомов. А из-за того, <em>на что ты опирался, чтобы успокоиться.</em></p>
+          <p>Ты зависел от того, что не мог контролировать. Сейчас ты вернул контроль — и система начала снижать напряжение.</p>
+        </div>
+        <button class="pr-btn-primary" onclick="PR.next()">Дальше →</button>
+      `;
+    }
+    return `
+      <div class="pr-block-tag">Что это значит</div>
+      <div class="pr-branch pr-branch-muted">
+        <p>Это важный сигнал.</p>
+        <p>Тревога держится глубже — не только на уровне текущей ситуации.</p>
+        <p>Обычно это <em>устойчивый паттерн:</em> система снова и снова выбирает источник, который не может дать успокоение.</p>
+        <p>Это можно изменить — но не за один шаг.</p>
+      </div>
+      <button class="pr-btn-primary" onclick="PR.next()">Дальше →</button>
+    `;
+  }
+
+  function renderPetla() {
+    return `
+      <div class="pr-block-tag">Ключевой момент</div>
+      <div class="pr-branch pr-branch-muted">
+        <p>Пока это не поменять — <em>тревога будет возвращаться,</em> даже если иногда становится легче.</p>
+      </div>
+      <button class="pr-btn-primary" onclick="PR.next()">Дальше →</button>
+    `;
+  }
+
+  function renderCTA() {
+    return `
+      <div class="pr-block-tag">Следующий шаг</div>
+      <div class="pr-cta-box">
+        <div class="pr-cta-lead">Я работаю именно с этим механизмом.</div>
+        <div class="pr-cta-body">Не с симптомами — а с тем, почему система застревает.<br>Разбираю, на что именно ты опираешься и как это изменить.</div>
+        <a class="pr-btn-primary" href="https://t.me/pererodin" target="_blank">Написать «тревога» в Telegram →</a>
+      </div>
+      <div class="pr-divider"></div>
+      <button class="pr-btn-ghost" onclick="PR.restart()">Пройти заново</button>
+    `;
+  }
+
+  // ── ACTIONS ──
+
+  window.PR = {
+    next,
+    setScore(type, val) { if(type==='before') S.scoreBefore=val; else S.scoreAfter=val; mount(); },
+    setReg(val) { S.regulator = val; mount(); },
+    setControl(val) { S.canControl = val; mount(); },
+    setAction(val) { S.action = val; mount(); },
+    setFelt(val) { S.felt = val; mount(); },
+    restart() {
+      Object.assign(S, { step:0, scoreBefore:null, scoreAfter:null, regulator:null, canControl:null, action:null, felt:null, breathPhase:'idle', breathCycle:0, breathCount:0 });
+      if(S.breathTimer) clearInterval(S.breathTimer);
+      mount();
+    },
+    startBreath() {
+      S.breathPhase = 'inhale';
+      S.breathCount = 4;
+      S.breathCycle = 0;
+      mount();
+      const phases = [{p:'inhale',d:4},{p:'hold',d:2},{p:'exhale',d:7}];
+      let pi = 0, count = 4;
+      S.breathTimer = setInterval(() => {
+        count--;
+        S.breathCount = count;
+        const el = document.getElementById('pr-circle');
+        if(el) { el.className='pr-breath-circle'; if(S.breathPhase==='inhale') el.classList.add('expand'); else if(S.breathPhase==='hold') el.classList.add('pause'); el.textContent=count; }
+        if(count <= 0) {
+          pi++;
+          if(pi >= phases.length) { pi=0; S.breathCycle++; }
+          if(S.breathCycle >= 5) { clearInterval(S.breathTimer); S.breathPhase='done'; mount(); return; }
+          count = phases[pi].d;
+          S.breathPhase = phases[pi].p;
+          S.breathCount = count;
+        }
+      }, 1000);
+    },
+    stopBreath() { if(S.breathTimer) clearInterval(S.breathTimer); S.breathPhase='idle'; mount(); },
+  };
+
+  // init when DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mount);
+  } else {
+    mount();
+  }
+})();
+</script>
 
 </body>
 </html>
